@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if customer %}Edit Institution{% else %}Add Institution{% endif %}</title>
+</head>
+<body>
+    <h1>{% if customer %}Edit Institution{% else %}Add Institution{% endif %}</h1>
+    <form method="POST" action="{% if institutions %}{{ url_for('edit', id=institutions[0]) }}{% else %}{{ url_for('add') }}{% endif %}">
+        <label for="institutions">Institutions Name:</label>
+        <input type="text" id="institutions" name="institutions" value="{% if institutions %}{{ institutions[1] }}{% endif %}" required><br>
+
+        
+        <button type="submit">{% if institutions %}Update{% else %}Add{% endif %}</button>
+    </form>
+</body>
+</html>
